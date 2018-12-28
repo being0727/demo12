@@ -7,7 +7,6 @@
     <!-- 控制台输出格式 -->
     <property name="CONSOLE_LOG_PATTERN"
               value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
-    
     <!-- 普通日志 -->
     <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>log/demo-info.log</file>
@@ -29,7 +28,7 @@
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>info</level>
             <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
+            <onMismatch>ACCEPT</onMismatch>
         </filter>
     </appender>
      <!-- 错误日志 -->
@@ -74,10 +73,9 @@
         </filter>
     </appender>
     <!-- additivity 避免执行2次 -->
-    <logger name="cn.com.bluemoon"  level="INFO"  additivity="false">
+    <logger name="com.example.being.demo12"  level="INFO"  additivity="false">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="INFO_FILE"/>
-        <appender-ref ref="ERROR_FILE"/>
     </logger>
     <root level="INFO">
         <appender-ref ref="STDOUT" />
